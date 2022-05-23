@@ -70,7 +70,7 @@ export default class Discover extends React.Component {
 }
 
 const DiscoverWrapper = styled.main`
-  padding: 35px;
+  padding: 45px;
 
   @media (max-width: ${sizes.tablet}) {
     padding-top: 28px;
