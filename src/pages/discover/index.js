@@ -7,6 +7,7 @@ import * as sizes from "../../breakpoints";
 
 import SearchFilters from "../../components/searchfilter";
 import MovieList from "../../components/movielist";
+import Hamburger from "../../components/hamburger";
 
 export default class Discover extends React.Component {
   constructor(props) {
@@ -44,7 +45,10 @@ export default class Discover extends React.Component {
 
     return (
       <DiscoverWrapper>
-        <MobilePageTitle>Discover</MobilePageTitle> {/* MobilePageTitle should become visible on mobile devices via CSS media queries*/}
+        <MobileHeader>
+          <Hamburger toogleSidebar={this.props.toogleSidebar} />
+          <MobilePageTitle>Discover</MobilePageTitle> {/* MobilePageTitle should become visible on mobile devices via CSS media queries*/}
+        </MobileHeader>
         <TotalCount>{totalCount} results</TotalCount>
         <MovieFilters>
           <SearchFilters
@@ -96,4 +100,9 @@ const MobilePageTitle = styled.h1`
 
 const TotalCount = styled.strong`
   display: block;
+`
+
+const MobileHeader = styled.div`
+  display: flex;
+  align-items: center;
 `

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef } from "react";
 import styled, { css } from 'styled-components';
 import { NavLink as Link } from "react-router-dom";
 
@@ -6,20 +6,30 @@ import * as colors from "../../colors";
 import * as sizes from "../../breakpoints";
 import Arrow from "../../images/arrow-icon.png";
 import SearchWhite from "../../images/search-icon-white.png";
-import Hamburger from "../hamburger";
 
-export default function SideNavBar() {
-  const [isOpen, setIsOpen] = useState(false);
-  /* TODO: Write the necessary functions to open and close the sidebar */
-  const toogleSidebar = () => {
-    setIsOpen(prev => !prev);
-  }
+export default function SideNavBar({ toogleSidebar, isOpen }) {
+  // /* TODO: Write the necessary functions to open and close the sidebar */
+  const sideNavRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (sideNavRef.current && isOpen && !sideNavRef.current.contains(event.target)) {
+        toogleSidebar();
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+  })
+
 
   return (
-    <SideNavBarCont className={isOpen ? 'visible' : ''}>
+    <SideNavBarCont ref={sideNavRef} className={isOpen ? 'visible' : ''}>
       {/* TODO: Implement a hamburger icon that controls the open state of the sidebar. This control should only be visible on mobile devices via CSS media queries */}
       {/* The sidebar should slide in from left */}
-      <Hamburger toogleSidebar={toogleSidebar} />
       <SideNavHeader>
         Wesley
         <img src={Arrow} alt="Arrow pointing down" />

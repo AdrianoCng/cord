@@ -14,12 +14,11 @@ export default function Hamburger({ toogleSidebar }) {
 }
 
 const Wrapper = styled.div`
-    display: block;
     height: 26px;
     width: 32px;
-    position: absolute;
-    top: 35px;
-    left: calc(280px + 35px);
+    // position: absolute;
+    // top: 35px;
+    // left: calc(280px + 35px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;

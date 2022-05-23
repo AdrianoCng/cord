@@ -11,14 +11,30 @@ import * as sizes from "./breakpoints";
 import './css/app.scss';
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isSidebarOpen: false,
+    };
+
+    this.toogleSidebar = this.toogleSidebar.bind(this);
+  }
+
+  toogleSidebar() {
+    this.setState(prev => ({
+      isSidebarOpen: !prev.isSidebarOpen
+    }));
+  }
+
   render() {
     return (
       <Router>
         <PageContainer>
-          <SideNavBar {...this.props} />
+          <SideNavBar toogleSidebar={this.toogleSidebar} isOpen={this.state.isSidebarOpen} />
           <ContentWrapper>
             <Switch>
-              <Route path="/discover" component={Discover} {...this.props} />
+              <Route path="/discover" render={props => <Discover toogleSidebar={this.toogleSidebar} {...props} />} />
             </Switch>
           </ContentWrapper>
         </PageContainer>
