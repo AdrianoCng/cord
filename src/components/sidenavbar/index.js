@@ -45,6 +45,7 @@ const SideNavBarCont = styled.div`
   height: 100%;
   background-color: ${colors.sideNavBar};
   color: white;
+  transition: margin .3s ease;
 
   @media (max-width: ${sizes.tablet}) {
     margin-left: -280px;
