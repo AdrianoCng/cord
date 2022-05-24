@@ -22,6 +22,10 @@ textarea {
     background-color: transparent;
 }
 
+.Collapsible:not(:last-child) {
+    margin-bottom: 20px;
+}
+
 .Collapsible__contentInner {
     padding-top: 25px;
 }

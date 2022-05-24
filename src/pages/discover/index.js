@@ -8,6 +8,7 @@ import * as sizes from "../../breakpoints";
 import SearchFilters from "../../components/searchfilter";
 import MovieList from "../../components/movielist";
 import Hamburger from "../../components/hamburger";
+import { fetchPopularMovies, fetchMovieGenres } from "../../fetcher";
 
 export default class Discover extends React.Component {
   constructor(props) {
@@ -36,7 +37,31 @@ export default class Discover extends React.Component {
     };
   }
 
+  async populatePopularMovies() {
+    try {
+      const popularMovies = await fetchPopularMovies();
+
+      this.setState({ results: popularMovies.results || [] })
+    } catch (error) {
+      this.setState({ results: [] })
+    }
+  }
+
+  async populateMovieGenres() {
+    try {
+      const movieGenres = await fetchMovieGenres();
+
+      this.setState({ genreOptions: movieGenres.genres || [] })
+    } catch (error) {
+      this.setState({ genreOptions: [] })
+    }
+  }
+
   // TODO: Preload and set the popular movies and movie genres when page loads
+  async componentDidMount() {
+    this.populatePopularMovies()
+    this.populateMovieGenres();
+  }
 
   // TODO: Update search results based on the keyword and year inputs
 

@@ -1,10 +1,15 @@
 import React from "react";
 import styled from 'styled-components';
-import Checkbox from "../checkbox";
 import Collapsible from "react-collapsible";
 
-export default function AccordionFilter({ label }) {
+import Checkbox from "../checkbox";
+
+export default function AccordionFilter({ label, options }) {
     const renderTrigger = () => {
+        if (!label) {
+            return null;
+        }
+
         return (
             <TriggerContainer>
                 <CloseTriggerElement />{label}
@@ -13,6 +18,10 @@ export default function AccordionFilter({ label }) {
     }
 
     const renderTriggerWhenOpen = () => {
+        if (!label) {
+            return null;
+        }
+
         return (
             <TriggerContainer>
                 <OpenTriggerElement />{label}
@@ -20,12 +29,19 @@ export default function AccordionFilter({ label }) {
         )
     }
 
+    const renderOptions = () => {
+        if (options.length < 1) {
+            return null;
+        }
+
+        return options.map(el => (
+            <Checkbox label={el.name} />
+        ))
+    }
+
     return (
         <Collapsible trigger={renderTrigger()} triggerWhenOpen={renderTriggerWhenOpen()} >
-            <Checkbox label="Test" />
-            <Checkbox label="Test" />
-            <Checkbox label="Test" />
-            <Checkbox label="Test" />
+            {renderOptions()}
         </Collapsible>
     )
 }

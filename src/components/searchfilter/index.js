@@ -32,6 +32,15 @@ export default function SearchFilters({ genres, ratings, languages, onSearch }) 
         {/* TODO: Complete the "AccordionFilter" component and re-use it for all filter categories */}
         <AccordionFilter
           label={"Select genre(s)"}
+          options={genres}
+        />
+        <AccordionFilter
+          label={"Select min. vote"}
+          options={ratings}
+        />
+        <AccordionFilter
+          label={"Select language"}
+          options={languages}
         />
       </SearchFiltersCont>
     </FiltersWrapper>
