@@ -31,7 +31,6 @@ export default function AccordionFilter({ label }) {
 }
 
 const TriggerContainer = styled.div`
-    margin-bottom: 25px;
     font-size: 1.05em;
     font-weight: bold;
 `
