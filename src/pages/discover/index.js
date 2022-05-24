@@ -86,6 +86,10 @@ const MovieFilters = styled.div`
   width: 280px;
   float: right;
   margin-top: 15px;
+
+  @media (max-width: ${sizes.tablet}) {
+    width: 100%;
+  }
 `
 
 const MobilePageTitle = styled.h1`

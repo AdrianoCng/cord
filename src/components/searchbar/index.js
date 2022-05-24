@@ -1,13 +1,16 @@
 import React from "react";
 import styled from 'styled-components';
+import filterIcon from "../../images/filter-icon.png";
 
 import * as colors from "../../colors";
+import * as sizes from "../../breakpoints";
 
-export default function SearchBar ({ icon, id, type, placeholder, onChange }) {
+export default function SearchBar({ icon, id, type, placeholder, onChange }) {
   return (
     <InputWrapper className="search_bar_wrapper">
       <img src={icon.src} alt={icon.alt} htmlFor={id} width="25" />
       <input type={type} id={id} onChange={e => onChange(e.target.value)} placeholder={placeholder} />
+      <FilterIconImg src={filterIcon} />
     </InputWrapper>
   );
 }
@@ -35,3 +38,10 @@ const InputWrapper = styled.div`
     }
   }
 `
+
+const FilterIconImg = styled.img`
+  background-repeat: none;
+  @media (min-width: ${sizes.tablet}) {
+    display: none;
+  }
+`;
