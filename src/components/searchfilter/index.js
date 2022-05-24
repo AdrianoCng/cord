@@ -68,6 +68,10 @@ const SearchFiltersCont = styled.div`
     .search_bar_wrapper:not(:first-child) {
       display: none;
     }
+
+    & {
+      margin-bottom: 45px;
+    }
   }
   
   ${props => props.marginBottom && css`

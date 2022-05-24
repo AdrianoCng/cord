@@ -89,7 +89,7 @@ export default class Discover extends React.Component {
           <Hamburger toogleSidebar={this.props.toogleSidebar} />
           <MobilePageTitle>Discover</MobilePageTitle> {/* MobilePageTitle should become visible on mobile devices via CSS media queries*/}
         </MobileHeader>
-        <TotalCount>{totalCount} results</TotalCount>
+        <TotalCount>{totalCount.toLocaleString()} results</TotalCount>
         <MovieFilters>
           <SearchFilters
             genres={genreOptions}
@@ -98,6 +98,7 @@ export default class Discover extends React.Component {
             onChange={(name, value) => { this.setState({ [name]: value }) }}
           />
         </MovieFilters>
+        <MobileTotalCount>{totalCount.toLocaleString()} results</MobileTotalCount>
         <MovieResults>
           <MovieList
             movies={results || []}
@@ -148,9 +149,23 @@ const MobilePageTitle = styled.h1`
 
 const TotalCount = styled.strong`
   display: block;
+
+  @media (max-width: ${sizes.smallLaptop}) {
+    display: none;
+  }
 `
 
 const MobileHeader = styled.div`
-  display: flex;
-  align-items: center;
+  @media (max-width: ${sizes.laptop}) {
+    display: flex;
+    align-items: center;
+  }
+`
+
+const MobileTotalCount = styled(TotalCount)`
+  display: none;
+  
+  @media (max-width: ${sizes.smallLaptop}) {
+    display: block;
+  }
 `

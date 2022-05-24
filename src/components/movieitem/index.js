@@ -26,8 +26,10 @@ export default function MovieItem({ movie, genres }) {
       <LeftCont movie={movie}>
       </LeftCont>
       <RightCont>
-        <Title>{movie.title}</Title>
-        <Badge>{movie.vote_average}</Badge>
+        <Header>
+          <Title>{movie.title}</Title>
+          <Badge>{movie.vote_average}</Badge>
+        </Header>
         {renderGenres()}
         <Overview>
           {movie.overview}
@@ -68,7 +70,7 @@ const RightCont = styled.div`
   display: flex;
   flex-direction: column;
   height: auto;
-  width: auto;
+  width: 100%;
   position: relative;
 `
 
@@ -96,9 +98,13 @@ const ReleaseDate = styled.span`
 const Badge = styled.div`
   padding: 5px;
   border-radius: 7px;
-  position: absolute;
-  right: 0;
   color: white;
   font-weight: bold;
-  background-color: ${colors.primaryColor}
+  background-color: ${colors.primaryColor};
+  align-self: baseline;
+`
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
 `
