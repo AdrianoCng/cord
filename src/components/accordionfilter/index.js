@@ -49,6 +49,7 @@ export default function AccordionFilter({ label, options }) {
 const TriggerContainer = styled.div`
     font-size: 1.05em;
     font-weight: bold;
+    cursor: pointer
 `
 
 const OpenTriggerElement = styled.span`
