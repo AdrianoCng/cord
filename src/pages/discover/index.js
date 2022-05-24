@@ -1,8 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
 
-import * as colors from "../../colors";
-import * as fetcher from "../../fetcher";
 import * as sizes from "../../breakpoints";
 
 import SearchFilters from "../../components/searchfilter";
