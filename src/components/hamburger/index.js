@@ -22,7 +22,7 @@ const Wrapper = styled.div`
     justify-content: space-between;
     cursor: pointer;
 
-    @media (min-width: ${sizes.tablet}) {
+    @media (min-width: ${sizes.laptop}) {
         display: none;
     }
 `

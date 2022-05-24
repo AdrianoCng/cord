@@ -41,7 +41,7 @@ const InputWrapper = styled.div`
 
 const FilterIconImg = styled.img`
   background-repeat: none;
-  @media (min-width: ${sizes.tablet}) {
+  @media (min-width: ${sizes.laptop}) {
     display: none;
   }
 `;

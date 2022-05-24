@@ -1,1 +1,1 @@
-export const tablet = "1205px";
+export const laptop = "1205px";

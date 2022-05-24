@@ -112,7 +112,7 @@ export default class Discover extends React.Component {
 const DiscoverWrapper = styled.main`
   padding: 45px;
 
-  @media (max-width: ${sizes.tablet}) {
+  @media (max-width: ${sizes.laptop}) {
     padding-top: 28px;
   }
 `
@@ -121,7 +121,7 @@ const MovieResults = styled.div`
   display: inline-block;
   width: 100%;
   
-  @media (min-width: ${sizes.tablet}) {
+  @media (min-width: ${sizes.laptop}) {
     width: calc(100% - 295px);
   }
 `
@@ -131,7 +131,7 @@ const MovieFilters = styled.div`
   float: right;
   margin-top: 15px;
 
-  @media (max-width: ${sizes.tablet}) {
+  @media (max-width: ${sizes.laptop}) {
     width: 100%;
   }
 `
@@ -139,7 +139,7 @@ const MovieFilters = styled.div`
 const MobilePageTitle = styled.h1`
   display: none;
 
-  @media (max-width: ${sizes.tablet}) {
+  @media (max-width: ${sizes.laptop}) {
     display: block;
     margin: 0;
     margin-left: 70px;

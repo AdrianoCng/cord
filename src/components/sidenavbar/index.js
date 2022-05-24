@@ -57,7 +57,7 @@ const SideNavBarCont = styled.div`
   color: white;
   transition: margin .3s ease;
 
-  @media (max-width: ${sizes.tablet}) {
+  @media (max-width: ${sizes.laptop}) {
     margin-left: -280px;
 
     &.visible {
