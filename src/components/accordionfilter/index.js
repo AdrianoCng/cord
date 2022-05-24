@@ -35,7 +35,7 @@ export default function AccordionFilter({ label, options }) {
         }
 
         return options.map(el => (
-            <Checkbox label={el.name} />
+            <Checkbox label={el.name} name={el.name} onChange={(name, value) => console.log(`${name}=${value}`)} />
         ))
     }
 

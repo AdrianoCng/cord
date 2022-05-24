@@ -33,6 +33,20 @@ export default class Discover extends React.Component {
         { id: 'PO', name: 'Polish' }
       ]
     };
+
+    this.handleOnChange = this.handleOnChange.bind(this);
+  }
+
+  // TODO: Preload and set the popular movies and movie genres when page loads
+  componentDidMount() {
+    this.populatePopularMovies()
+    this.populateMovieGenres();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if ((this.state.keyword !== prevState.keyword) || (this.state.year !== prevState.year)) {
+      this.searchMovies()
+    }
   }
 
   async populatePopularMovies() {
@@ -67,18 +81,9 @@ export default class Discover extends React.Component {
     });
   }
 
-  // TODO: Preload and set the popular movies and movie genres when page loads
-  async componentDidMount() {
-    this.populatePopularMovies()
-    this.populateMovieGenres();
+  handleOnChange(name, value) {
+    this.setState({ [name]: value });
   }
-
-  componentDidUpdate(prevProps, prevState) {
-    if ((this.state.keyword !== prevState.keyword) || (this.state.year !== prevState.year)) {
-      this.searchMovies()
-    }
-  }
-
 
   render() {
     const { genreOptions, languageOptions, ratingOptions, totalCount, results } = this.state;
@@ -95,7 +100,7 @@ export default class Discover extends React.Component {
             genres={genreOptions}
             ratings={ratingOptions}
             languages={languageOptions}
-            onChange={(name, value) => { this.setState({ [name]: value }) }}
+            onChange={this.handleOnChange}
           />
         </MovieFilters>
         <MobileTotalCount>{totalCount.toLocaleString()} results</MobileTotalCount>
