@@ -36,40 +36,35 @@ export default class Discover extends React.Component {
   }
 
   async populatePopularMovies() {
-    try {
-      const popularMovies = await fetchPopularMovies();
+    const { results, total_results } = await fetchPopularMovies();
 
-      this.setState({ results: popularMovies.results || [] })
-      this.setState({ totalCount: popularMovies.total_results || 0 })
-    } catch (error) {
-      this.setState({ results: [] })
-    }
+    this.setState({
+      results: results || [],
+      totalCount: total_results || 0
+    })
   }
 
   async populateMovieGenres() {
-    try {
-      const movieGenres = await fetchMovieGenres();
+    const movieGenres = await fetchMovieGenres();
 
-      this.setState({ genreOptions: movieGenres.genres || [] })
-    } catch (error) {
-      this.setState({ genreOptions: [] })
-    }
+    this.setState({
+      genreOptions: movieGenres.genres || []
+    })
   }
 
   // TODO: Update search results based on the keyword and year inputs
   async searchMovies() {
-    try {
-      if (!this.state.keyword) {
-        this.populatePopularMovies();
-        return;
-      }
-
-      const movie = await fetchMovieByKeyword(this.state.keyword, this.state.year);
-
-      this.setState({ results: movie.results, totalCount: movie.total_results || 0 });
-    } catch (error) {
-      this.setState({ results: [] });
+    if (!this.state.keyword) {
+      this.populatePopularMovies();
+      return;
     }
+
+    const movie = await fetchMovieByKeyword(this.state.keyword, this.state.year);
+
+    this.setState({
+      results: movie.results,
+      totalCount: movie.total_results || 0
+    });
   }
 
   // TODO: Preload and set the popular movies and movie genres when page loads
