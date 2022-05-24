@@ -121,7 +121,7 @@ const MovieResults = styled.div`
   display: inline-block;
   width: 100%;
   
-  @media (min-width: ${sizes.laptop}) {
+  @media (min-width: ${sizes.tablet}) {
     width: calc(100% - 295px);
   }
 `
@@ -131,7 +131,7 @@ const MovieFilters = styled.div`
   float: right;
   margin-top: 15px;
 
-  @media (max-width: ${sizes.laptop}) {
+  @media (max-width: ${sizes.tablet}) {
     width: 100%;
   }
 `

@@ -1,7 +1,6 @@
 import React from "react";
 import styled, { css } from 'styled-components';
 
-import * as colors from "../../colors";
 import * as sizes from "../../breakpoints";
 import ExpandableFilter from "../accordionfilter";
 import SearchBar from "../../components/searchbar";
@@ -64,7 +63,7 @@ const SearchFiltersCont = styled.div`
     margin-bottom: 15px;
   }
 
-  @media (max-width: ${sizes.laptop}) {
+  @media (max-width: ${sizes.tablet}) {
     &:not(:first-child),
     .search_bar_wrapper:not(:first-child) {
       display: none;
