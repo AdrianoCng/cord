@@ -126,7 +126,11 @@ const DiscoverWrapper = styled.main`
 
 const MovieResults = styled.div`
   display: inline-block;
-  width: calc(100% - 295px);
+  width: 100%;
+  
+  @media (min-width: ${sizes.tablet}) {
+    width: calc(100% - 295px);
+  }
 `
 
 const MovieFilters = styled.div`
