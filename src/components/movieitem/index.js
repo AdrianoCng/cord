@@ -29,8 +29,10 @@ export default function MovieItem({ movie, genres }) {
         <Title>{movie.title}</Title>
         {renderGenres()}
         <Overview>
-          <p>{movie.overview}</p>
+          {movie.overview}
         </Overview>
+
+        <ReleaseDate>{movie.release_date}</ReleaseDate>
       </RightCont>
     </MovieItemWrapper>
   )
@@ -77,7 +79,14 @@ const Genres = styled.span`
   color: ${colors.primaryColor}
 `
 
-const Overview = styled.div`
-  height: 200px;
+const Overview = styled.p`
+  flex-grow: 1;
   overflow: auto;
+`
+
+const ReleaseDate = styled.span`
+  color: ${colors.primaryColor};
+  font-size: 0.8em;
+  opacity: 0.6;
+  font-weight: lighter;
 `
