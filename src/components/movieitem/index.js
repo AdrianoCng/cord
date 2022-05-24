@@ -2,6 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 
 import * as colors from "../../colors";
+import * as sizes from "../../breakpoints";
 
 export default function MovieItem({ movie, genres }) {
 
@@ -55,7 +56,7 @@ const LeftCont = styled.div`
   background-position: center;
   background-repeat: no-repeat;
 
-  @media (max-width: 424px) {
+  @media (max-width: ${sizes.largeMobile}) {
     display: none;
   }
 `
