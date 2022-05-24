@@ -5,11 +5,11 @@ import filterIcon from "../../images/filter-icon.png";
 import * as colors from "../../colors";
 import * as sizes from "../../breakpoints";
 
-export default function SearchBar({ icon, id, type, placeholder, onChange }) {
+export default function SearchBar({ icon, id, type, placeholder, onChange, name }) {
   return (
     <InputWrapper className="search_bar_wrapper">
       <img src={icon.src} alt={icon.alt} htmlFor={id} width="25" />
-      <input type={type} id={id} onChange={e => onChange(e.target.value)} placeholder={placeholder} />
+      <input type={type} id={id} name={name} onChange={e => onChange(e.target.name, e.target.value)} placeholder={placeholder} />
       <FilterIconImg src={filterIcon} />
     </InputWrapper>
   );

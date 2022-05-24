@@ -10,21 +10,25 @@ import SearchIcon from "../../images/search-icon-yellow.png";
 import YearIcon from "../../images/year-icon.png";
 import AccordionFilter from "../accordionfilter";
 
-export default function SearchFilters({ genres, ratings, languages, onSearch }) {
+export default function SearchFilters({ genres, ratings, languages, onChange }) {
   return (
     <FiltersWrapper>
       <SearchFiltersCont className="search_inputs_cont" marginBottom>
         <SearchBar
           id="keyword_search_input"
           type="text"
+          name="keyword"
           icon={{ src: SearchIcon, alt: 'Magnifying glass' }}
           placeholder="Search for movies"
+          onChange={onChange}
         />
         <SearchBar
           id="year_search_input"
           type="number"
+          name="year"
           icon={{ src: YearIcon, alt: 'Calendar icon' }}
           placeholder="Year of release"
+          onChange={onChange}
         />
       </SearchFiltersCont>
       <SearchFiltersCont>

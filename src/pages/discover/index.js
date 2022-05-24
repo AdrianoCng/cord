@@ -8,7 +8,7 @@ import * as sizes from "../../breakpoints";
 import SearchFilters from "../../components/searchfilter";
 import MovieList from "../../components/movielist";
 import Hamburger from "../../components/hamburger";
-import { fetchPopularMovies, fetchMovieGenres } from "../../fetcher";
+import { fetchPopularMovies, fetchMovieGenres, fetchMovieByKeyword } from "../../fetcher";
 
 export default class Discover extends React.Component {
   constructor(props) {
@@ -42,6 +42,7 @@ export default class Discover extends React.Component {
       const popularMovies = await fetchPopularMovies();
 
       this.setState({ results: popularMovies.results || [] })
+      this.setState({ totalCount: popularMovies.total_results || 0 })
     } catch (error) {
       this.setState({ results: [] })
     }
@@ -57,13 +58,34 @@ export default class Discover extends React.Component {
     }
   }
 
+  // TODO: Update search results based on the keyword and year inputs
+  async searchMovies() {
+    try {
+      if (!this.state.keyword) {
+        this.populatePopularMovies();
+        return;
+      }
+
+      const movie = await fetchMovieByKeyword(this.state.keyword, this.state.year);
+
+      this.setState({ results: movie.results, totalCount: movie.total_results || 0 });
+    } catch (error) {
+      this.setState({ results: [] });
+    }
+  }
+
   // TODO: Preload and set the popular movies and movie genres when page loads
   async componentDidMount() {
     this.populatePopularMovies()
     this.populateMovieGenres();
   }
 
-  // TODO: Update search results based on the keyword and year inputs
+  componentDidUpdate(prevProps, prevState) {
+    if ((this.state.keyword !== prevState.keyword) || (this.state.year !== prevState.year)) {
+      this.searchMovies()
+    }
+  }
+
 
   render() {
     const { genreOptions, languageOptions, ratingOptions, totalCount, results } = this.state;
@@ -80,7 +102,7 @@ export default class Discover extends React.Component {
             genres={genreOptions}
             ratings={ratingOptions}
             languages={languageOptions}
-            searchMovies={(keyword, year) => this.searchMovies(keyword, year)}
+            onChange={(name, value) => { this.setState({ [name]: value }) }}
           />
         </MovieFilters>
         <MovieResults>
