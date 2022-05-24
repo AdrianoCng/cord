@@ -119,10 +119,10 @@ const DiscoverWrapper = styled.main`
 
 const MovieResults = styled.div`
   display: inline-block;
-  width: 100%;
+  width: calc(100% - 295px);
   
-  @media (min-width: ${sizes.tablet}) {
-    width: calc(100% - 295px);
+  @media (max-width: ${sizes.smallLaptop}) {
+    width: 100%;
   }
 `
 
@@ -131,7 +131,7 @@ const MovieFilters = styled.div`
   float: right;
   margin-top: 15px;
 
-  @media (max-width: ${sizes.tablet}) {
+  @media (max-width: ${sizes.smallLaptop}) {
     width: 100%;
   }
 `

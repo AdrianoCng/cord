@@ -63,7 +63,7 @@ const SearchFiltersCont = styled.div`
     margin-bottom: 15px;
   }
 
-  @media (max-width: ${sizes.tablet}) {
+  @media (max-width: ${sizes.smallLaptop}) {
     &:not(:first-child),
     .search_bar_wrapper:not(:first-child) {
       display: none;
