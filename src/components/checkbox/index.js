@@ -2,7 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 
 
-export default function Checkbox ({ id, name, checked, label, onChange }) {
+export default function Checkbox({ id, name, checked, label, onChange }) {
   // TODO: Style the component and checkmark to look like the mockup provided
   return (
     <CheckboxCont>
@@ -15,4 +15,13 @@ export default function Checkbox ({ id, name, checked, label, onChange }) {
 
 const CheckboxCont = styled.div`
   position: relative;
+  margin-bottom: 5px;
+
+  input[type=checkbox] {
+    transform: scale(1.3);
+  }
+
+  label {
+    margin-left: 10px;
+  }
 `
